@@ -15,7 +15,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "firstname")
-    private String firstName;
+    private String firstname;
 
     @Column(name = "surname")
     private String surname;
@@ -23,14 +23,14 @@ public class Student {
     @Column(name = "mail")
     private String mail;
 
-    public Student(String firstName, String surname, String mail) {
-        this.firstName = firstName;
+    public Student(String firstname, String surname, String mail) {
+        this.firstname = firstname;
         this.surname = surname;
         this.mail = mail;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstname) {
+        this.firstname = firstname;
     }
 
     public void setSurname(String surname) {
