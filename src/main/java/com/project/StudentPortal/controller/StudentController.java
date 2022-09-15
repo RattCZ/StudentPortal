@@ -1,9 +1,10 @@
 package com.project.StudentPortal.controller;
 
 import com.project.StudentPortal.model.Student;
-import com.project.StudentPortal.repository.MySqlRepository;
+
+import com.project.StudentPortal.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,22 +15,22 @@ import java.util.Optional;
 public class StudentController {
 
     @Autowired
-    MySqlRepository mySqlRepository;
+    StudentRepository studentRepository;
 
     @GetMapping("/getAllStudents")
     public List<Student> getAllStudents() {
-        return mySqlRepository.findAll();
+        return studentRepository.findAll();
     }
 
     @GetMapping("/getStudent/{id}")
     public Student getStudentById(@PathVariable("id") Integer id) {
-        return mySqlRepository.findById(id).get();
+        return studentRepository.findById(id).get();
     }
 
     @DeleteMapping("/remove/{id}")
     public boolean deleteStudent(@PathVariable("id") Integer id){
-        if(!mySqlRepository.findById(id).equals(Optional.empty())){
-            mySqlRepository.deleteById(id);
+        if(!studentRepository.findById(id).equals(Optional.empty())){
+            studentRepository.deleteById(id);
             return true;
         }
         return false;
@@ -39,11 +40,11 @@ public class StudentController {
     public Student updateStudent(@PathVariable("id") Integer id,
                                  @RequestBody Map<String, String> body){
 
-        Student current = mySqlRepository.findById(id).get();
+        Student current = studentRepository.findById(id).get();
         current.setFirstName(body.get("firstname"));
         current.setSurname(body.get("surname"));
         current.setMail(body.get("mail"));
-        mySqlRepository.save(current);
+        studentRepository.save(current);
         return current;
     }
 
@@ -55,6 +56,6 @@ public class StudentController {
         String mail = body.get("mail");
         Student newAddress = new Student(firstname, surname, mail);
 
-        return mySqlRepository.save(newAddress);
+        return studentRepository.save(newAddress);
     }
 }
