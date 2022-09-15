@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+@Controller
 @RequestMapping("/students")
 public class StudentController {
 

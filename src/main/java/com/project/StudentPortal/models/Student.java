@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstname;
 
@@ -21,8 +22,7 @@ public class Student {
 
     }
 
-    public Student(Integer id, String firstname, String surname, String mail) {
-        this.id = id;
+    public Student(String firstname, String surname, String mail) {
         this.firstname = firstname;
         this.surname = surname;
         this.mail = mail;
