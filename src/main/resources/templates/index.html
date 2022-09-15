@@ -33,16 +33,9 @@
       loadPersons();
     }
 
-    $('.table #deleteButton').on('click',function(event) {
-		event.preventDefault();
-		var href = $(this).attr('href');
-		$('#deleteModal #delRef').attr('href', href);
-		$('#deleteModal').modal();
-
-	});
 
   </script>
-
+    <script>$(".rest").restfulizer();</script>
 </head>
 <body>
 <h1>Welcome to the Student Portal</h1>
@@ -117,14 +110,3 @@
 </script>
 </body>
 </html>
-
-<!--
-formEl2.addEventListener('submit', event => {
-event.preventDefault();
-
-const formData = new FormData(formEl2);
-const data = Object.fromEntries(formData);
-
-fetch('http://localhost:8080/remove', {
-method: 'DELETE'
-});-->
